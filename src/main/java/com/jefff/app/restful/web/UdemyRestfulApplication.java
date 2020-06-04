@@ -1,6 +1,5 @@
 package com.jefff.app.restful.web;
 
-import com.jefff.app.restful.web.ui.controller.UserController;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.SpringApplication;
@@ -11,38 +10,37 @@ import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
-import java.util.Arrays;
 import java.util.Scanner;
 
 @SpringBootApplication
-public class UdemyRestfulWebApplication
+public class UdemyRestfulApplication
     // Keep the 'extends in if we want to run within external Tomcat.
     extends SpringBootServletInitializer
 {
 
-	public static Logger _log = LoggerFactory.getLogger(UdemyRestfulWebApplication.class) ;
+    public static Logger _log = LoggerFactory.getLogger(UdemyRestfulApplication.class);
     ConfigurableApplicationContext _context;
 
 
     // Keep configure() method if we want to run within Tomcat
     @Override
     protected SpringApplicationBuilder configure(SpringApplicationBuilder builder) {
-        return builder.sources(UdemyRestfulWebApplication.class);
+        return builder.sources(UdemyRestfulApplication.class);
     }
 
     public static void main(String[] args) {
         _log.info(String.format("UdemyRestfulWebApplication.main() invoked, arg size = %d", args.length));
-        _log.info(UdemyRestfulWebApplication.class.getName());
-        _log.info(UdemyRestfulWebApplication.class.getCanonicalName());
+        _log.info(UdemyRestfulApplication.class.getName());
+        _log.info(UdemyRestfulApplication.class.getCanonicalName());
         for(int i=0; i< args.length; i++) {
             System.out.printf("args[%d] = %s\n", i, args[i]);
         }
-        ConfigurableApplicationContext context = SpringApplication.run(UdemyRestfulWebApplication.class, args);
-        UdemyRestfulWebApplication application = new UdemyRestfulWebApplication(context);
+        ConfigurableApplicationContext context = SpringApplication.run(UdemyRestfulApplication.class, args);
+        UdemyRestfulApplication application = new UdemyRestfulApplication(context);
         application.run();
     }
 
-    public UdemyRestfulWebApplication(ConfigurableApplicationContext context) {
+    public UdemyRestfulApplication(ConfigurableApplicationContext context) {
         _context = context;
     }
 
